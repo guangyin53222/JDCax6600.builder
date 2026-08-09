@@ -105,8 +105,8 @@ echo "   前端: luci-app-gecoosac (JS 版，兼容 25.12)"
 # ========== 9. OpenAppFilter（锁定 v6.1.8 tag，匹配 OpenWrt 25.12.x） ==========
 echo ">>> [9/9] 安装 OpenAppFilter..."
 rm -rf package/OpenAppFilter
-git clone --depth 1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-cd package/OpenAppFilter
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
 echo "✅ OpenAppFilter 安装完成"
 
 # ========== 完成 ==========
