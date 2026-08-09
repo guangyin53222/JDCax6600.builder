@@ -1,5 +1,0 @@
-
-config settings
-	option acceptRoutes '0'
-	option enabled '1'
-
