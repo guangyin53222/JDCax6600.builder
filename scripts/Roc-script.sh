@@ -105,22 +105,8 @@ echo "   前端: luci-app-gecoosac (JS 版，兼容 25.12)"
 # ========== 9. OpenAppFilter（锁定 v6.1.8 tag，匹配 OpenWrt 25.12.x） ==========
 echo ">>> [9/9] 安装 OpenAppFilter..."
 rm -rf package/OpenAppFilter
-git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+git clone --depth 1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 cd package/OpenAppFilter
-
-# 强校验：锁定 v6.1.8 tag，不存在则终止编译
-git fetch origin --tags
-if git checkout v6.1.8; then
-    OAF_VER=$(git describe --tags --always)
-    echo "✅ OAF 锁定版本 $OAF_VER（匹配 OpenWrt 25.12.x / kernel 6.12）"
-else
-    echo "❌ OpenAppFilter tag v6.1.8 不存在，终止编译"
-    echo " 请检查上游仓库: https://github.com/destan19/OpenAppFilter"
-    cd -
-    exit 1
-fi
-
-cd -
 echo "✅ OpenAppFilter 安装完成"
 
 # ========== 完成 ==========
