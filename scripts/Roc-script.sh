@@ -90,12 +90,6 @@ git clone --depth=1 https://github.com/ctcgfw/luci-theme-aurora package/luci-the
 echo "⚠️ Aurora 主题为非官方维护，如遇编译失败可忽略或移除"
 echo "✅ Aurora 主题安装完成"
 
-# ========== 8. 安装 feeds（全脚本只此一次） ==========
-echo ">>> [8/9] 安装所有 feeds..."
-./scripts/feeds update -a
-./scripts/feeds install -a
-echo "✅ Feeds 安装完成"
-
 # ========== 8.5 集客 AC 控制器（JS 增强版，适配 OpenWrt 25.12 / LuCI 24.x） ==========
 echo ">>> [8.5/9] 安装集客 AC 控制器..."
 rm -rf package/luci-app-gecoosac package/gecoosac
@@ -126,6 +120,16 @@ fi
 
 cd -
 echo "✅ OpenAppFilter 安装完成"
+
+
+
+# ==========9. 安装 feeds（全脚本只此一次） ==========
+echo ">>> [8/9] 安装所有 feeds..."
+./scripts/feeds update -a
+./scripts/feeds install -a
+echo "✅ Feeds 安装完成"
+
+
 
 # ========== 完成 ==========
 echo ""
