@@ -6,7 +6,7 @@
 # 插件: iStore + Athena LED + Harbor File + OpenClash
 # Argon / Aurora 主题
 # NSS 加速 / SQM / USB 存储
-# OpenAppFilter (锁定 v6.1.8 tag，匹配 OpenWrt 25.12.x)
+# OpenAppFilter (匹配 OpenWrt 25.12.x)
 # 集客 AC 控制器 (JS 增强版，适配 LuCI 24.x)
 # ============================================================
 
