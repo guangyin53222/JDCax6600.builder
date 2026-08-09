@@ -8,7 +8,7 @@
 
 ## 项目说明
 
-- 默认管理地址：**`192.168.88.1`**
+- 默认管理地址：**`192.168.100.1`**
 - 默认用户：**`root`**
 - 默认密码：**`none`**（空密码）
 - 上游仓库：[Lang-Ke/OpenWrt-CI](https://github.com/Lang-Ke/OpenWrt-CI)（通过 GitHub **Sync fork** 保持更新）
