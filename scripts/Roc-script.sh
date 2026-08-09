@@ -84,11 +84,7 @@ git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-t
 echo "✅ Argon 主题安装完成"
 
 # ========== 7. Aurora 主题 ==========
-echo ">>> [7/9] 安装 Aurora 主题..."
-rm -rf package/luci-theme-aurora
-git clone --depth=1 https://github.com/ctcgfw/luci-theme-aurora package/luci-theme-aurora
-echo "⚠️ Aurora 主题为非官方维护，如遇编译失败可忽略或移除"
-echo "✅ Aurora 主题安装完成"
+
 
 # ========== 8. 安装 feeds（全脚本只此一次） ==========
 echo ">>> [8/9] 安装所有 feeds..."
