@@ -26,13 +26,20 @@ for cmd in git curl make; do
     }
 done
 
-./scripts/feeds update -a > /dev/null 2>&1 || true
+# 确保 feeds.conf 存在（OpenWrt 编译必需）
+[ -f "feeds.conf" ] || cp feeds.conf.default feeds.conf
+
 echo "✅ 环境检查完成"
 
 # ========== 1. 替换 Golang 为 sbwml 维护版 ==========
 echo ">>> [1/9] 替换 Golang 工具链 (sbwml)..."
-rm -rf feeds/packages/lang/golang
-git clone --depth=1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+
+if [ -d "feeds/packages/lang/golang/.git" ]; then
+    echo "⏭️ Golang 已替换，跳过"
+else
+    rm -rf feeds/packages/lang/golang
+    git clone --depth=1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+fi
 
 # 校验 Go 版本
 GO_VER=$(grep -m1 'PKG_VERSION' feeds/packages/lang/golang/Makefile | cut -d= -f2)
@@ -81,7 +88,7 @@ rm -rf package/luci-theme-aurora
 git clone --depth=1 https://github.com/ctcgfw/luci-theme-aurora package/luci-theme-aurora
 echo "✅ Aurora 主题安装完成"
 
-# ========== 8. 安装 feeds ==========
+# ========== 8. 安装 feeds（全脚本只此一次） ==========
 echo ">>> [8/9] 安装所有 feeds..."
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -92,11 +99,17 @@ echo ">>> [9/9] 安装 OpenAppFilter..."
 rm -rf package/OpenAppFilter
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 cd package/OpenAppFilter
-# 2026-07-24 最新提交：消除编译警告和严格模式错误
-# 修复了 LuCI 活跃用户状态显示 & 内存泄漏问题 (2026-04-20)
-git checkout a189ad8
+
+# 尝试 checkout 指定 commit，失败则回退到 master 最新
+if git checkout a189ad8 2>/dev/null; then
+    echo "✅ OAF 锁定 commit a189ad8"
+else
+    echo "⚠️ commit a189ad8 不存在，使用 master 最新"
+    git checkout master
+fi
+
 cd -
-echo "✅ OpenAppFilter 安装完成 (跟随 master，锁定稳定 commit a189ad8)"
+echo "✅ OpenAppFilter 安装完成"
 
 # ========== 完成 ==========
 echo ""
@@ -116,8 +129,8 @@ echo ""
 echo "📋 接下来请执行:"
 echo " cp configs/IPQ60XX-RECS02 .config"
 echo " make defconfig"
-echo " make menuconfig   # 可选，检查配置"
-echo " make -j\$(nproc)   # 开始编译"
+echo " make menuconfig # 可选，检查配置"
+echo " make -j\$(nproc) # 开始编译"
 echo ""
 echo "⚠️ 注意事项:"
 echo " - .config 中不要重复启用 feeds 版的 luci-app-store"
