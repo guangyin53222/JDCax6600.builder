@@ -7,6 +7,7 @@
 # Argon / Aurora 主题
 # NSS 加速 / SQM / USB 存储
 # OpenAppFilter (锁定 v6.1.8 tag，匹配 OpenWrt 25.12.x)
+# 集客 AC 控制器 (JS 增强版，适配 LuCI 24.x)
 # ============================================================
 
 set -e
@@ -95,6 +96,16 @@ echo ">>> [8/9] 安装所有 feeds..."
 ./scripts/feeds install -a
 echo "✅ Feeds 安装完成"
 
+# ========== 8.5 集客 AC 控制器（JS 增强版，适配 OpenWrt 25.12 / LuCI 24.x） ==========
+echo ">>> [8.5/9] 安装集客 AC 控制器..."
+rm -rf package/luci-app-gecoosac package/gecoosac
+
+git clone --depth=1 https://github.com/laipeng668/luci-app-gecoosac package/luci-app-gecoosac
+
+echo "✅ 集客 AC 控制器源码安装完成（需 AP 固件 7.6+，建议 8.x）"
+echo "   后端: gecoosac"
+echo "   前端: luci-app-gecoosac (JS 版，兼容 25.12)"
+
 # ========== 9. OpenAppFilter（锁定 v6.1.8 tag，匹配 OpenWrt 25.12.x） ==========
 echo ">>> [9/9] 安装 OpenAppFilter..."
 rm -rf package/OpenAppFilter
@@ -108,7 +119,7 @@ if git checkout v6.1.8; then
     echo "✅ OAF 锁定版本 $OAF_VER（匹配 OpenWrt 25.12.x / kernel 6.12）"
 else
     echo "❌ OpenAppFilter tag v6.1.8 不存在，终止编译"
-    echo "   请检查上游仓库: https://github.com/destan19/OpenAppFilter"
+    echo " 请检查上游仓库: https://github.com/destan19/OpenAppFilter"
     cd -
     exit 1
 fi
@@ -129,7 +140,8 @@ echo " 3. Harbor File (文件管理器)"
 echo " 4. Athena LED (京东云 LED 控制)"
 echo " 5. Argon 主题 (LuCI 主题)"
 echo " 6. Aurora 主题 (LuCI 主题)"
-echo " 7. OpenAppFilter (应用过滤, v6.1.8)"
+echo " 7. 集客 AC 控制器 (服务 → 集客AC控制器)"
+echo " 8. OpenAppFilter (应用过滤, v6.1.8)"
 echo ""
 echo "📋 接下来请执行:"
 echo " cp configs/IPQ60XX-RECS02 .config"
@@ -146,4 +158,5 @@ echo " - iStore 仅支持 x86_64 / arm64 (IPQ60xx 是 arm64 ✅)"
 echo " - OAF 已锁定 v6.1.8 tag（匹配 25.12.x / kernel 6.12）"
 echo " - Aurora 主题维护停滞，25.12 下可能编译失败，可忽略"
 echo " - NSS 加速与 OAF DPI 共存时若异常，先关闭 Turbo ACC 验证"
+echo " - 集客 AC 需 AP 固件 7.6+，建议升级至 8.x 以获得最佳兼容性"
 echo ""
