@@ -84,16 +84,8 @@ git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-t
 echo "✅ Argon 主题安装完成"
 
 # ========== 7. Aurora 主题 ==========
-
-
-# ========== 8. 安装 feeds（全脚本只此一次） ==========
-echo ">>> [8/9] 安装所有 feeds..."
-./scripts/feeds update -a
-./scripts/feeds install -a
-echo "✅ Feeds 安装完成"
-
-# ========== 8.5 集客 AC 控制器（JS 增强版，适配 OpenWrt 25.12 / LuCI 24.x） ==========
-echo ">>> [8.5/9] 安装集客 AC 控制器..."
+# ========== 7.5 集客 AC 控制器（JS 增强版，适配 OpenWrt 25.12 / LuCI 24.x） ==========
+echo ">>> [7.5/9] 安装集客 AC 控制器..."
 rm -rf package/luci-app-gecoosac package/gecoosac
 git clone --depth=1 https://github.com/laipeng668/luci-app-gecoosac package/luci-app-gecoosac
 
@@ -101,12 +93,20 @@ echo "✅ 集客 AC 控制器源码安装完成（需 AP 固件 7.6+，建议 8.
 echo "   后端: gecoosac"
 echo "   前端: luci-app-gecoosac (JS 版，兼容 25.12)"
 
-# ========== 9. OpenAppFilter（匹配 OpenWrt 25.12.x） ==========
-echo ">>> [9/9] 安装 OpenAppFilter..."
+# ========== 8. OpenAppFilter（匹配 OpenWrt 25.12.x） ==========
+echo ">>> [8/9] 安装 OpenAppFilter..."
 rm -rf package/OpenAppFilter
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 echo "✅ OpenAppFilter 安装完成"
+
+
+# ========== 8.5. 安装 feeds（全脚本只此一次） ==========
+echo ">>> [9/9] 安装所有 feeds..."
+./scripts/feeds update -a
+./scripts/feeds install -a
+echo "✅ Feeds 安装完成"
+
 
 # ========== 完成 ==========
 echo ""
