@@ -69,10 +69,11 @@ rm -rf package/luci-theme-aurora
 git clone --depth=1 https://github.com/ctcgfw/luci-theme-aurora package/luci-theme-aurora
 echo "✅ Aurora 主题安装完成"
 
-# OpenAppFilter v6.1.8（应用过滤/家长控制）
+# OpenAppFilter（不锁版本，跟仓库默认分支最新代码）
 rm -rf package/OpenAppFilter
-git clone --depth 1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-echo "  ✅ OpenAppFilter"
+git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+echo " ✅ OpenAppFilter (跟随上游 master)"
+
 
 # ========== 8. 安装 feeds ==========
 echo ">>> [8/8] 安装所有 feeds..."
