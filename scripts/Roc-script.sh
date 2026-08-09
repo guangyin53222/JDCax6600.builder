@@ -1,5 +1,5 @@
 # 修改默认IP
-sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_generate
 #固件名称
 sed -i "s/hostname='.*'/hostname='OpenWrt'/g" package/base-files/files/bin/config_generate
 # 编译署名和时间
