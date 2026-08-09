@@ -102,7 +102,7 @@ echo "✅ 集客 AC 控制器源码安装完成（需 AP 固件 7.6+，建议 8.
 echo "   后端: gecoosac"
 echo "   前端: luci-app-gecoosac (JS 版，兼容 25.12)"
 
-# ========== 9. OpenAppFilter（锁定 v6.1.8 tag，匹配 OpenWrt 25.12.x） ==========
+# ========== 9. OpenAppFilter（匹配 OpenWrt 25.12.x） ==========
 echo ">>> [9/9] 安装 OpenAppFilter..."
 rm -rf package/OpenAppFilter
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
