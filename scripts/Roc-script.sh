@@ -95,7 +95,6 @@ echo "✅ Feeds 安装完成"
 # ========== 8.5 集客 AC 控制器（JS 增强版，适配 OpenWrt 25.12 / LuCI 24.x） ==========
 echo ">>> [8.5/9] 安装集客 AC 控制器..."
 rm -rf package/luci-app-gecoosac package/gecoosac
-
 git clone --depth=1 https://github.com/laipeng668/luci-app-gecoosac package/luci-app-gecoosac
 
 echo "✅ 集客 AC 控制器源码安装完成（需 AP 固件 7.6+，建议 8.x）"
