@@ -60,7 +60,9 @@ rm -rf package/luci-app-harbor-file
 git clone --depth=1 https://github.com/destan19/luci-app-harbor-file package/luci-app-harbor-file
 echo "✅ Harbor File 安装完成"
 
-git clone --depth=1 https://github.com/xiaren2/JDC-AX6600-Athena-LED-Controller
+# 1. 克隆仓库
+git clone https://github.com/xiaren2/JDC-AX6600-Athena-LED-Controller.git
+
 
 
 # ========== 7.5 集客 AC 控制器（JS 增强版，适配 OpenWrt 25.12 / LuCI 24.x） ==========
