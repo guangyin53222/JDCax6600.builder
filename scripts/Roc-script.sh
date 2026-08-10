@@ -60,11 +60,6 @@ git clone --depth=1 https://github.com/destan19/luci-app-harbor-file package/luc
 echo "✅ Harbor File 安装完成"
 
 
-# ========== 6. Argon 主题 ==========
-echo ">>> [6/9] 安装 Argon 主题..."
-rm -rf package/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-echo "✅ Argon 主题安装完成"
 
 # ========== 7. Aurora 主题 ==========
 # ========== 7.5 集客 AC 控制器（JS 增强版，适配 OpenWrt 25.12 / LuCI 24.x） ==========
