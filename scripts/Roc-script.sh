@@ -9,7 +9,8 @@
 # OpenAppFilter (匹配 OpenWrt 25.12.x)
 # 集客 AC 控制器 (JS 增强版，适配 LuCI 24.x)
 # ============================================================
-
+# 修改默认IP
+sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_generate
 set -e
 
 # ========== 0. 基础环境检查 ==========
