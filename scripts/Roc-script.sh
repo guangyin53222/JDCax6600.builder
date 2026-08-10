@@ -46,11 +46,6 @@ fi
 GO_VER=$(grep -m1 'PKG_VERSION' feeds/packages/lang/golang/Makefile | cut -d= -f2)
 echo "✅ Golang 替换完成 (版本: $GO_VER)"
 
-# ========== 2. OpenClash ==========
-echo ">>> [2/9] 安装 OpenClash..."
-rm -rf package/luci-app-openclash
-git clone --depth=1 https://github.com/vernesong/OpenClash package/luci-app-openclash
-echo "✅ OpenClash 安装完成"
 
 # ========== 3. iStore ==========
 echo ">>> [3/9] 安装 iStore..."
@@ -64,18 +59,6 @@ rm -rf package/luci-app-harbor-file
 git clone --depth=1 https://github.com/destan19/luci-app-harbor-file package/luci-app-harbor-file
 echo "✅ Harbor File 安装完成"
 
-# ========== 5. Athena LED Controller (拆包) ==========
-echo ">>> [5/9] 安装 Athena LED Controller..."
-rm -rf package/athena-led package/luci-app-athena-led
-
-TMPDIR=$(mktemp -d)
-git clone --depth=1 https://github.com/unraveloop/JDC-AX6600-Athena-LED-Controller "$TMPDIR"
-
-cp -r "$TMPDIR"/athena-led package/athena-led
-cp -r "$TMPDIR"/luci-app-athena-led package/luci-app-athena-led
-
-rm -rf "$TMPDIR"
-echo "✅ Athena LED 安装完成 (athena-led + luci-app-athena-led)"
 
 # ========== 6. Argon 主题 ==========
 echo ">>> [6/9] 安装 Argon 主题..."
@@ -93,12 +76,6 @@ echo "✅ 集客 AC 控制器源码安装完成（需 AP 固件 7.6+，建议 8.
 echo "   后端: gecoosac"
 echo "   前端: luci-app-gecoosac (JS 版，兼容 25.12)"
 
-# ========== 8. OpenAppFilter（匹配 OpenWrt 25.12.x） ==========
-#echo ">>> [8/9] 安装 OpenAppFilter..."
-#rm -rf package/OpenAppFilter
-#git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
-
-#echo "✅ OpenAppFilter 安装完成"
 
 
 # ========== 8.5. 安装 feeds（全脚本只此一次） ==========
